@@ -38,9 +38,7 @@ public class Main
 
   public void go()
   {
-    factory.setBagClass("MapBag");
-//    factory.setBagClass("ArrayBag");
-
+    factory.setBagClass("LinkedListBag");
 
     try
     {
@@ -71,6 +69,7 @@ public class Main
       bag3.addWithOccurrences("xyz", 5);
       bag3.add("opq");
       bag3.addWithOccurrences("123", 3);
+      //bag3.addWithOccurrences("23", 3);
       System.out.print("bag3 all unique:             ");
       print(bag3);
       System.out.print("bag3 all:                    ");

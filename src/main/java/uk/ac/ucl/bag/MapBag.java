@@ -99,17 +99,10 @@ public class MapBag<T extends Comparable> extends AbstractBag<T> {
         return(contents.size());
     }
 
-//    public void storeKeys() {
-//        for (T key : contents.keySet()) {
-//                listOfKeys.add(key);
-//        }
-//    }
-
     private class MapBagUniqueIterator implements Iterator<T>
     {
         private int index = 0;
         private ArrayList<T> listOfKeys= new ArrayList<T>(contents.keySet());
-
         public boolean hasNext()
         {
             if (index < listOfKeys.size()) return true;
@@ -120,7 +113,6 @@ public class MapBag<T extends Comparable> extends AbstractBag<T> {
     }
 
     public Iterator<T> iterator() {
-//        storeKeys();
         return new MapBagUniqueIterator();
     }
 
@@ -153,6 +145,7 @@ public class MapBag<T extends Comparable> extends AbstractBag<T> {
         }
     }
 
-    public Iterator<T> allOccurrencesIterator() { return new MapBagIterator(); }
+    public Iterator<T> allOccurrencesIterator() {
+        return new MapBagIterator(); }
 
 }
