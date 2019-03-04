@@ -9,6 +9,7 @@ public class MapBag<T extends Comparable> extends AbstractBag<T> {
     private int maxSize;
     private HashMap<T, Integer> contents;
 
+
     public MapBag() throws BagException
     {
         this(MAX_SIZE);

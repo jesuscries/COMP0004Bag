@@ -96,13 +96,24 @@ public class LinkedListBag<T extends Comparable> extends AbstractBag<T> {
     }
     public void remove(T value) {
         tail = head;
-        while (tail != null ) {
-            if (tail.value.compareTo(value) == 0 ) {
-                head = tail.next;
+        while (tail.next != null ) {
+            if (head.value.compareTo(value) == 0 ) {
+                if (head.occurrences == 1) {
+                    head = head.next;
+                }
+                else {
+                    head.occurrences--;
+                }
             }
             else if (tail.next.value.compareTo(value) == 0 ) {
-                tail.next = tail.next.next;
+                if (tail.next.occurrences == 1) {
+                    tail.next = tail.next.next;
+                }
+                else {
+                    tail.next.occurrences--;
+                }
             }
+            tail = tail.next;
         }
     }
     public boolean isEmpty()
@@ -119,22 +130,6 @@ public class LinkedListBag<T extends Comparable> extends AbstractBag<T> {
         }
         return i;
     }
-//    private ArrayList<T> storeKeys() {
-//        tail = head;
-//        while (tail != null) {
-//            listOfKeys.add(tail.value);
-//            tail = tail.next;
-//        }
-//        return listOfKeys;
-//    }
-//    private ArrayList<T> storeOccurrencesKeys() {
-//        tail = head;
-//        while (tail != null) {
-//            anotherListOfKeys.add(tail.value);
-//            tail = tail.next;
-//        }
-//        return anotherListOfKeys;
-//    }
 
     private class LinkedListBagUniqueIterator implements Iterator<T> {
         private int index = 0;

@@ -60,6 +60,7 @@ public class Main
       bag2.add("def");
       bag2.add("def");
       bag2.add("klm");
+      bag2.remove("def");
       System.out.print("bag2 all unique:             ");
       print(bag2);
       System.out.print("bag2 all:                    ");
@@ -83,6 +84,8 @@ public class Main
       System.out.print("createMergedAllUnique:       ");
       Bag<String> bag5 = bag1.createMergedAllUnique(bag3);
       print(bag5);
+
+      System.out.print(bag5.toString());
     }
     catch (BagException e)
     {

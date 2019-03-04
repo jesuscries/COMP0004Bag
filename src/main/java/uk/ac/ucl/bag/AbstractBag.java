@@ -44,6 +44,14 @@ public abstract class AbstractBag<T extends Comparable> implements Bag<T>
       String getOccurrences = String.valueOf(countOf(value));
       s = s + getValue + ": " + getOccurrences + ", ";
     }
+    s = s.substring(0,s.length()-2);
+    s = s + "]";
     return s;
   }
+
+//  public void removeAllCopies() {
+//    for (T value : this) {
+//      countOf(value) = 1;
+//    }
+//  }
 }
