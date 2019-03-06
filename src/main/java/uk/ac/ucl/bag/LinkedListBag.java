@@ -96,24 +96,27 @@ public class LinkedListBag<T extends Comparable> extends AbstractBag<T> {
     }
     public void remove(T value) {
         tail = head;
-        while (tail.next != null ) {
-            if (head.value.compareTo(value) == 0 ) {
-                if (head.occurrences == 1) {
-                    head = head.next;
-                }
-                else {
-                    head.occurrences--;
-                }
+        if (head.value.compareTo(value) == 0) {
+            if (head.occurrences == 1) {
+                head = head.next;
             }
-            else if (tail.next.value.compareTo(value) == 0 ) {
-                if (tail.next.occurrences == 1) {
+            else {
+                head.occurrences--;
+            }
+        }
+        while (tail.next != null) {
+        if (tail.next.value.compareTo(value) == 0) {
+                if ((tail.next.occurrences == 1) && (tail.next.next != null)) {
                     tail.next = tail.next.next;
-                }
-                else {
+                } else if ((tail.next.occurrences == 1) && (tail.next.next == null)) {
+                    tail.next = null;
+                } else {
                     tail.next.occurrences--;
                 }
             }
+        if (tail.next != null) {
             tail = tail.next;
+        }
         }
     }
     public boolean isEmpty()

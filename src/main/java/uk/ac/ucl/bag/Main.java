@@ -1,6 +1,8 @@
 package uk.ac.ucl.bag;
 
 import java.util.Iterator;
+import java.io.IOException;
+
 
 /**
  * Example code illustrating the use of Bag objects.
@@ -60,7 +62,6 @@ public class Main
       bag2.add("def");
       bag2.add("def");
       bag2.add("klm");
-      bag2.remove("def");
       System.out.print("bag2 all unique:             ");
       print(bag2);
       System.out.print("bag2 all:                    ");
@@ -70,12 +71,10 @@ public class Main
       bag3.addWithOccurrences("xyz", 5);
       bag3.add("opq");
       bag3.addWithOccurrences("123", 3);
-      //bag3.addWithOccurrences("23", 3);
       System.out.print("bag3 all unique:             ");
       print(bag3);
       System.out.print("bag3 all:                    ");
       printAll(bag3);
-
 
       System.out.print("createMergedAllOccurrences:  ");
       Bag<String> bag4 = bag1.createMergedAllOccurrences(bag3);
@@ -85,11 +84,19 @@ public class Main
       Bag<String> bag5 = bag1.createMergedAllUnique(bag3);
       print(bag5);
 
-      System.out.print(bag5.toString());
+      Bag<String> bag6 = bag1.subtract(bag2);
+      print(bag6);
+
+//      bag3.writeIt();
+
+      System.out.print(bag5.readIt(String.class));
     }
     catch (BagException e)
     {
       System.out.println("====> Bag Exception thrown...");
+    }
+    catch (IOException e) {
+      System.out.println("====> IO Exception thrown...");
     }
   }
 

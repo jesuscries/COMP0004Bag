@@ -1,6 +1,7 @@
 package uk.ac.ucl.bag;
 
 import java.util.Iterator;
+import java.io.IOException;
 
 /**
  * A Bag is a data structure that can hold a collection of values (really object references of course), along with
@@ -106,6 +107,14 @@ public interface Bag<T extends Comparable> extends Iterable<T>
    * @return The new Iterator.
    */
   public Iterator<T> allOccurrencesIterator();
+
+  void removeAllCopies();
+
+  void writeIt() throws IOException;
+
+  Bag<T> readIt(Class<T> elementType) throws IOException, BagException;
+
+  Bag<T> subtract(Bag<T> bag) throws BagException;
 
   /*
   This method declaration is inherited from interface Iterator, so not redeclared here.
